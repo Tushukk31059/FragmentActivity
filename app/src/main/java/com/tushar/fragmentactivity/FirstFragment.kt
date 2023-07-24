@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,10 +23,11 @@ class FirstFragment : Fragment() ,NewInterface{
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    lateinit var ettext: EditText
+    private var num: Int = 0
     lateinit var btnClear: Button
     lateinit var tvcopiedtext: EditText
     lateinit var fragmentInterface: MainActivity
+    private lateinit var tvnumber: TextView
 
 
 
@@ -33,7 +35,7 @@ class FirstFragment : Fragment() ,NewInterface{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         fragmentInterface=activity as MainActivity
-        fragmentInterface.newinterface=this
+        fragmentInterface.newinterface = this
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -51,11 +53,11 @@ class FirstFragment : Fragment() ,NewInterface{
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tvcopiedtext=view.findViewById(R.id.tvcopiedtext)
-        ettext=view.findViewById(R.id.ettext)
+        tvnumber=view.findViewById(R.id.tvnumber)
         btnClear=view.findViewById(R.id.btnClear)
         tvcopiedtext.setText("name")
         btnClear.setOnClickListener(){
-            ettext.getText().clear()
+
             tvcopiedtext.getText().clear()
         }
     }
@@ -80,9 +82,21 @@ class FirstFragment : Fragment() ,NewInterface{
             }
     }
     override fun clearnumber(){
-
-        ettext.getText().clear()
         tvcopiedtext.getText().clear()
 
+    }
+
+    override fun changeFragmentText(string: String) {
+        tvcopiedtext.text= string
+    }
+
+    override fun add() {
+        num = num + 1
+        num.toString().also { tvnumber.text=it }
+    }
+
+    override fun minus() {
+        num = num - 1
+        num.toString().also { tvnumber.text = it }
     }
 }

@@ -1,4 +1,0 @@
-interface NewInterface {
-
-   fun clearnumber()
-}

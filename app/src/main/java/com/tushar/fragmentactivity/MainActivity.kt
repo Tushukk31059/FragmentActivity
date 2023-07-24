@@ -9,7 +9,7 @@ import com.tushar.fragmentactivity.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var newinterface: NewInterface
-    lateinit var tvnumber: TextView
+
 
 
     var num = 0
@@ -21,17 +21,15 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btnPass.setOnClickListener() {
-            var intent = Intent(this, FirstFragment::class.java)
-            intent.putExtra("name", binding.ettext.text.toString())
+           newinterface.changeFragmentText(binding.ettext.text.toString())
+
         }
-        binding.btnPlus.setOnClickListener() {
-            num = num + 1
-            tvnumber.setText(num.toString())
+        binding.btnPlus.setOnClickListener(){
+            newinterface.add()
 
         }
         binding.btnMinus.setOnClickListener() {
-            num = num - 1
-            tvnumber.setText(num.toString())
-        }
+           newinterface.minus()
+                   }
     }
 }
