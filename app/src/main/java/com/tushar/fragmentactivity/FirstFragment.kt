@@ -20,7 +20,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class FirstFragment : Fragment() ,NewInterface{
-    // TODO: Rename and change types of parameters
+
     private var param1: String? = null
     private var param2: String? = null
     private var num: Int = 0
@@ -28,8 +28,6 @@ class FirstFragment : Fragment() ,NewInterface{
     lateinit var tvcopiedtext: EditText
     lateinit var fragmentInterface: MainActivity
     private lateinit var tvnumber: TextView
-
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,8 +84,9 @@ class FirstFragment : Fragment() ,NewInterface{
 
     }
 
-    override fun changeFragmentText(string: String) {
-        tvcopiedtext.text= string
+    override fun changeFragmentText(textt:String) {
+        tvcopiedtext.setText(textt)
+        System.out.println("Text $textt")
     }
 
     override fun add() {

@@ -15,14 +15,19 @@ class MainActivity : AppCompatActivity() {
     var num = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+       // setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
         binding.btnPass.setOnClickListener() {
-           newinterface.changeFragmentText(binding.ettext.text.toString())
+            if(binding.ettext.text.toString().isNullOrEmpty()){
+                binding.ettext.error="Enter Name"
 
+            } else {
+                newinterface.changeFragmentText(textt = binding.ettext.text.toString())
+
+            }
         }
         binding.btnPlus.setOnClickListener(){
             newinterface.add()
